@@ -170,3 +170,7 @@
   .Coin_shadow {
     background: url(/images/coin-shadow.png) no-repeat no-repeat;
   }
+
+  #npc .Character_sprite {
+    background: url(/images/character_1.png) no-repeat no-repeat;
+}

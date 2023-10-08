@@ -361,6 +361,46 @@ function getRandomSafeSpot() {
   });
 
 
+  function createNPC() {
+    const npc = document.createElement('div');
+    npc.id = 'npc';
+    npc.classList.add('Character', 'grid-cell');
+
+    const sprite = document.createElement('div');
+    sprite.classList.add('Character_sprite', 'grid-cell');
+    npc.appendChild(sprite);
+
+    const gameContainer = document.querySelector('.game-container');
+    gameContainer.appendChild(npc);
+}
+
+createNPC();
+
+let npcPosition = { x: 10, y: 10 };
+let movingLeft = true;
+
+function moveNPC() {
+    const npcElement = document.getElementById('npc');
+    
+    if (movingLeft && npcPosition.x > 7) {
+        npcPosition.x--;
+        if (npcPosition.x === 7) {
+            movingLeft = false;
+        }
+    } else if (!movingLeft && npcPosition.x < 10) {
+        npcPosition.x++;
+        if (npcPosition.x === 10) {
+            movingLeft = true;
+        }
+    }
+
+    const left = npcPosition.x * 26 + 'px';
+    const top = npcPosition.y * 26 - 4 + 'px';
+    npcElement.style.transform = `translate3d(${left}, ${top}, 0)`;
+}
+
+// Initier le mouvement du NPC
+setInterval(moveNPC, 500);  // Déplace le NPC toutes les 500 millisecondes
 
 
 
